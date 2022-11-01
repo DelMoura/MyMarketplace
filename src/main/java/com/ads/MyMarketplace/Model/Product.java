@@ -15,5 +15,6 @@ public class Product {
     private Integer id;
     private String name;
     private String tipo;
+    private Double valor;
     private Integer estoque;
 }
