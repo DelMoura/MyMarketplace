@@ -22,8 +22,10 @@ public class ProductService {
         return repository.findAll();
     }
 
-    public List<Product> findProduct(String name) {
-        return repository.findAllByName(name);
+    public List<Product> findProduct(String name, String tipo) {
+        return repository.findByNameOrTipo(name, tipo);
 
     }
+
+
 }

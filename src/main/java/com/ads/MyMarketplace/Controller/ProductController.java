@@ -28,9 +28,11 @@ public class ProductController {
 
     @GetMapping("/{name}")
     @ResponseBody
-    public List<Product> findProduct(@PathVariable("name") String name){
-        List<Product> prod = service.findProduct(name);
+    public List<Product> findProduct(@PathVariable("name") String name, @PathVariable("name") String tipo) {
+        List<Product> prod = service.findProduct(name, tipo);
+
         return prod;
+
     }
 
 
