@@ -1,6 +1,7 @@
 package com.ads.MyMarketplace.Controller;
 
 import com.ads.MyMarketplace.Model.Product;
+import com.ads.MyMarketplace.Service.AdminService;
 import com.ads.MyMarketplace.Service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class ProductController {
 
     @Autowired
     private ProductService service;
+    private AdminService serviceAdmin;
 
     @GetMapping
     public List<Product> listAllProduct() {
@@ -33,6 +35,14 @@ public class ProductController {
 
         return prod;
 
+    }
+
+    @PostMapping
+    @ResponseBody
+    public void saveProdoct(Product product) {
+        String username = "Admin123";
+        String password = "321";
+        serviceAdmin.saveProduct(username, password,product);
     }
 
 
