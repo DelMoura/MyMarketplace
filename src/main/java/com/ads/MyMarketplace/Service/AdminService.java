@@ -23,11 +23,8 @@ public class AdminService {
 
     }
 
-    public void saveProduct(String username, String password, Product products) {
-        if (username.equals(username) && password.equals(password)) {
+    public void saveProduct(Product products) {
             repositoryProd.save(products);
-        }
-
     }
 
 

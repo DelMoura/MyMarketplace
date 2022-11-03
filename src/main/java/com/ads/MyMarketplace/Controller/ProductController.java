@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -39,10 +38,9 @@ public class ProductController {
 
     @PostMapping
     @ResponseBody
-    public void saveProdoct(Product product) {
-        String username = "Admin123";
-        String password = "321";
-        serviceAdmin.saveProduct(username, password,product);
+    public  void saveProduct(Product product) {
+
+        serviceAdmin.saveProduct(product);
     }
 
 
