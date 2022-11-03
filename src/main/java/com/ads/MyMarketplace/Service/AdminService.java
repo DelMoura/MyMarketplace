@@ -1,30 +1,47 @@
 package com.ads.MyMarketplace.Service;
 
+import com.ads.MyMarketplace.Model.Admin;
 import com.ads.MyMarketplace.Model.Product;
+import com.ads.MyMarketplace.Repository.AdminRepository;
 import com.ads.MyMarketplace.Repository.ProductRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
+@AllArgsConstructor
 public class AdminService {
 
-    @Autowired
-    private ProductRepository repositoryProd;
 
+    private AdminRepository repositoryAdmin;
 
-    public List<Product> listAllProduct() {
-        return repositoryProd.findAll();
+    public void registerAdmin(Admin admin) {
+        repositoryAdmin.save(admin);
     }
 
-    public List<Product> findProduct(String name, String tipo) {
-        return repositoryProd.findByNameOrTipo(name, tipo);
+    public String loginAdmin(Admin admin) {
+        var admins = this.repositoryAdmin.findByUsername(admin.getUsername());
+        if (admins.getPassword().equals(admin.getPassword())) {
+            return keyLogin(new Random());
+
+        }
+
+        return null;
 
     }
 
-    public void saveProduct(Product products) {
-            repositoryProd.save(products);
+    public String keyLogin(Random random) {
+
+        String text = "";
+        for (int i = 0; i < 10; i++) {
+            text = text + random.nextInt();
+        }
+        return text;
     }
 
 

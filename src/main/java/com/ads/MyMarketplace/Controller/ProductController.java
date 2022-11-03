@@ -20,7 +20,7 @@ public class ProductController {
 
     @Autowired
     private ProductService service;
-    private AdminService serviceAdmin;
+
 
     @GetMapping
     public List<Product> listAllProduct() {
@@ -38,9 +38,8 @@ public class ProductController {
 
     @PostMapping
     @ResponseBody
-    public  void saveProduct(Product product) {
-
-        serviceAdmin.saveProduct(product);
+    public void saveProduct(@RequestBody Product product) {
+        service.saveProduct(product);
     }
 
 

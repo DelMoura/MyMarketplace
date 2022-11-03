@@ -11,10 +11,9 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class ProductService {
 
-    @Autowired
+
     private ProductRepository repository;
 
 
@@ -25,6 +24,10 @@ public class ProductService {
     public List<Product> findProduct(String name, String tipo) {
         return repository.findByNameOrTipo(name, tipo);
 
+    }
+
+    public void saveProduct(Product prod) {
+        repository.save(prod);
     }
 
 
