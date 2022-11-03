@@ -19,6 +19,7 @@ public class AdminService {
 
 
     private AdminRepository repositoryAdmin;
+    private KeyAdminService key;
 
     public void registerAdmin(Admin admin) {
         repositoryAdmin.save(admin);
@@ -27,7 +28,8 @@ public class AdminService {
     public String loginAdmin(Admin admin) {
         var admins = this.repositoryAdmin.findByUsername(admin.getUsername());
         if (admins.getPassword().equals(admin.getPassword())) {
-            return keyLogin(new Random());
+            key.setKEY(keyLogin(new Random()));
+            return key.getKEY();
 
         }
 

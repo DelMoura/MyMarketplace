@@ -1,6 +1,7 @@
 package com.ads.MyMarketplace.Controller;
 
 import com.ads.MyMarketplace.Model.Product;
+import com.ads.MyMarketplace.Model.ProductPost;
 import com.ads.MyMarketplace.Service.AdminService;
 import com.ads.MyMarketplace.Service.ProductService;
 import lombok.AllArgsConstructor;
@@ -38,7 +39,7 @@ public class ProductController {
 
     @PostMapping
     @ResponseBody
-    public void saveProduct(@RequestBody Product product) {
+    public void saveProduct(@RequestBody ProductPost product) {
         service.saveProduct(product);
     }
 
