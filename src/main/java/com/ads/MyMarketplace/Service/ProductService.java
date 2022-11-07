@@ -75,7 +75,7 @@ public class ProductService {
         if (keyPass.equals(key.getKEY())) {
             Optional<Product> prod = this.repository.findById(id);
 
-           
+
             if (prod.get().getId().equals(id)) {
                 prod.get().setEstoque(inventory);
                 this.repository.save(prod.get());
