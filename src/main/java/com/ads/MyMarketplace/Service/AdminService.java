@@ -43,7 +43,7 @@ public class AdminService {
         for (int i = 0; i < 10; i++) {
             text = text + random.nextInt();
         }
-        return text;
+        return   text;
     }
 
 

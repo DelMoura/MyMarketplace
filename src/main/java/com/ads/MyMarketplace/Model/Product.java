@@ -1,5 +1,7 @@
 package com.ads.MyMarketplace.Model;
+
 import lombok.*;
+
 import javax.persistence.*;
 
 @Entity

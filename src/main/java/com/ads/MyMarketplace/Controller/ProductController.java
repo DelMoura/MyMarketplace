@@ -43,5 +43,23 @@ public class ProductController {
         service.saveProduct(product);
     }
 
+    @DeleteMapping("/{id}/key/{chave}")
+    @ResponseBody
+    public void deletProduct(@PathVariable("id") Integer id, @PathVariable("chave") String key) {
+        this.service.deletProduct(id, key);
+    }
+
+    @PutMapping("/{id}/newPrice/{price}/keyPass/{key}")
+    @ResponseBody
+    public void updatePrice(@PathVariable("id") Integer id, @PathVariable("price") Double price, @PathVariable("key") String keypass) {
+        this.service.updatePrice(id, price, keypass);
+    }
+    @PutMapping("/{id}/newInventory/{inventory}/keyPass/{key}")
+    @ResponseBody
+    public void updateIventory(@PathVariable("id") Integer id, @PathVariable("inventory") Integer inventory, @PathVariable("key") String keypass) {
+        this.service.updateInventory(id, inventory, keypass);
+    }
+
+
 
 }

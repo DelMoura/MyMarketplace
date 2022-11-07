@@ -4,13 +4,11 @@ import com.ads.MyMarketplace.Model.Product;
 import com.ads.MyMarketplace.Model.ProductPost;
 import com.ads.MyMarketplace.Repository.ProductRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -42,8 +40,55 @@ public class ProductService {
         }
     }
 
-    public void deleteProduct(){
-        
+
+    public void deletProduct(Integer id, String keyPass) {
+
+        if (keyPass.equals(key.getKEY())) {
+            this.repository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
+
+
+    }
+
+    public void updatePrice(Integer id, Double price, String keyPass) {
+        if (keyPass.equals(key.getKEY())) {
+            Optional<Product> prod = this.repository.findById(id);
+
+            if (prod.get().getId().equals(id)) {
+                prod.get().setValor(price);
+                this.repository.save(prod.get());
+
+
+            }
+
+
+        } else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
+
+
+    }
+
+    public void updateInventory(Integer id, Integer inventory, String keyPass) {
+        if (keyPass.equals(key.getKEY())) {
+            Optional<Product> prod = this.repository.findById(id);
+
+           
+            if (prod.get().getId().equals(id)) {
+                prod.get().setEstoque(inventory);
+                this.repository.save(prod.get());
+
+
+            }
+
+
+        } else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
+
+
     }
 
 
